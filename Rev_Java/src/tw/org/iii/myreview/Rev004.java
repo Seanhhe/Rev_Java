@@ -1,5 +1,8 @@
 package tw.org.iii.myreview;
-
+/**
+ * 	參考Java Tutorial > How to Make Dialogs
+ * 	網址: https://docs.oracle.com/javase/tutorial/uiswing/components/dialog.html
+ */
 import javax.swing.JOptionPane;
 
 public class Rev004 {
