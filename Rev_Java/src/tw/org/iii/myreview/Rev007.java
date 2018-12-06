@@ -66,8 +66,22 @@ public class Rev007 {
 		//Java 沒有 if else if 語法
 		//會看到的原因 -> 單列敘述句所演變而成
 		//一層又一層->過濾機制
+		int score1 = (int)(Math.random()*101);
+		
+		if (score1 >= 90) {
+			System.out.println("A");
+		}else if (score1 >= 80) {
+			System.out.println("B");
+		}else if (score1 >= 70) {
+			System.out.println("C");
+		}else if (score1 >= 60) {
+			System.out.println("D");
+		}else {
+			System.out.println("E");
+		}
 		
 		
+		System.out.println("score :" + score1);
 	}
 
 }
