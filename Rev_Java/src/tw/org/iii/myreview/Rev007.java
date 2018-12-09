@@ -15,7 +15,7 @@ public class Rev007 {
 		// random()取得亂數 double 0.0~1.0之間
 		// 為什麼乘與101? -> 因要取得0~100的值
 		
-		int d1 = (int)(Math.random()*100);
+		int d1 = (int)(Math.random()*101);
 		//System.out.println(d1);
 		
 		if (d1 >= 60) {
