@@ -155,7 +155,7 @@ public class Rev024_TWid_class {
 			int sum = n1*1 + n2*9 + n3*8 + n4*7 + n5*6 + n6*5 + n7*4 + n8*3 + n9*2 + n10*1 + n11*1;
 			isCorrect = sum % 10 == 0;
 		}
-		System.out.println(isCorrect);
+		//System.out.println(isCorrect);
 		return isCorrect;
 	}
 	
