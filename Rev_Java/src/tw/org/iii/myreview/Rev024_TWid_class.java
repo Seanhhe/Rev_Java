@@ -71,10 +71,12 @@ public class Rev024_TWid_class {
 	 */
 	
 	//	建構式	(物件的初始化)
-	//	只有
+	//	只有這四招可以產生身分證(自動產生)
+	//	
 	Rev024_TWid_class() {
 		//	隨機給男女(true/false), 呼叫isMale執行
 		//	這裡的this -> 呼叫本類別的(建構式)
+		//	參考文件: https://openhome.cc/Gossip/Java/This.html
 		this((int)(Math.random()*2)==0);
 	}
 	
@@ -131,6 +133,8 @@ public class Rev024_TWid_class {
 			}
 		}
 	}
+	
+	
 	
 	// 方法_身分證驗證法1	(加上static 可以讓別人單獨呼叫此方法-->使用者輸入id檢查)
 	static boolean checkId(String id) {
@@ -206,15 +210,26 @@ public class Rev024_TWid_class {
 	}
 	
 	//	方法_產生回傳新身分證字號	(因為建構式本身沒有回傳, 所以要透過static方法才能回傳新的id字串)
-	static Rev024_TWid_class createTWid(String id) {	//型別是物件型別?
+	static Rev024_TWid_class createTWid(String id) throws Exception {	//型別是物件型別?
 		if (checkId(id)) {	//確認產生的id合格
 			return new Rev024_TWid_class(id);	//回傳新的id物件
 		}else {
-			return null;
+			throw new Exception();
+			//return null;
 		}
 	}
 	
 	//	方法_讓使用者可以輸入id判斷男女	(字串版)
+	/*
+	 * 	if()裏頭會隨機產生NullPointerException
+	 * 	代表讀取到null(空值)
+	 * 	回頭看放入id的動作正常
+	 * 	但在 createTWid(String id) 中, else加入throw new Exception()
+	 * 	Rev024_TWid主程式加上 throws Exception 如下所示
+	 * 	public static void main(String[] args) throws Exception
+	 * 	-------
+	 * 	測試後仍會隨機產生NullPointerException
+	 */
 	String gender() {
 		if (this.id.charAt(1) == '1') {
 			return "男性";
