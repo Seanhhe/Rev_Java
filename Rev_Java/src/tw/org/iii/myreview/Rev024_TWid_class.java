@@ -54,7 +54,7 @@ package tw.org.iii.myreview;
  *		. 代表該字元任何字都可以
  */
 
-public class Rev024_TWid_class {
+public class Rev024_TWid_class extends Object{
 	
 	// 屬性建立
 	// 參考維基: https://zh.wikipedia.org/wiki/%E4%B8%AD%E8%8F%AF%E6%B0%91%E5%9C%8B%E5%9C%8B%E6%B0%91%E8%BA%AB%E5%88%86%E8%AD%89
@@ -90,6 +90,7 @@ public class Rev024_TWid_class {
 		this((int)(Math.random()*2)==0, area);
 	}
 	
+
 	Rev024_TWid_class(boolean isMale, int area) {
 		String i1 = letters.substring(area, area+1);
 		String i2 = isMale?"1":"2";
@@ -123,14 +124,24 @@ public class Rev024_TWid_class {
 						.concat(String.valueOf((int)(Math.random()*10)))
 						.concat(String.valueOf((int)(Math.random()*10)))
 						.concat(String.valueOf((int)(Math.random()*10)));
-		
+		System.out.println("String newId2: " + newId2);
 		//	最後一碼檢查碼	(正確就產生正式ID回傳)
 		//	執行checkId_方法來檢查
 		for (int i = 0; i <9; i++) {
+//			if ((this.id != null) && (checkId(newId2+i))) {		//id永遠null
+//			if (checkId(newId2+i)&&((newId2+i)!=null)) {	//隨機出現id=null
 			if (checkId(newId2+i)) {
 				this.id = newId2 + i;
+				System.out.println("newId2 :" + newId2 + " i:" + i);
+				System.out.println(id);
 				break;
-			}
+			}//else {
+				//new Rev024_TWid_class(); //溢位
+				//Rev024_TWid_class id3 = new Rev024_TWid_class(); //溢位
+				//i = 0; return;	//隨機出現無窮迴圈
+				
+			//}
+			
 		}
 	}
 	
@@ -155,7 +166,6 @@ public class Rev024_TWid_class {
 			int n9 = Integer.parseInt(id.substring(7, 8));
 			int n10 = Integer.parseInt(id.substring(8, 9));
 			int n11 = Integer.parseInt(id.substring(9, 10));
-			// 驗證規則	(https://zh.wikipedia.org/wiki/%E4%B8%AD%E8%8F%AF%E6%B0%91%E5%9C%8B%E5%9C%8B%E6%B0%91%E8%BA%AB%E5%88%86%E8%AD%89#%E9%A9%97%E8%AD%89%E8%A6%8F%E5%89%87)
 			int sum = n1*1 + n2*9 + n3*8 + n4*7 + n5*6 + n6*5 + n7*4 + n8*3 + n9*2 + n10*1 + n11*1;
 			isCorrect = sum % 10 == 0;
 		}
@@ -201,6 +211,7 @@ public class Rev024_TWid_class {
 	
 	//	方法_回傳該物件的身分證字號
 	String getId() {
+		System.out.println("getId = " + id);
 		return this.id;
 	}
 	
@@ -215,7 +226,7 @@ public class Rev024_TWid_class {
 			return new Rev024_TWid_class(id);	//回傳新的id物件
 		}else {
 			throw new Exception();
-			//return null;
+			//return null;	//避免return null
 		}
 	}
 	
@@ -229,6 +240,9 @@ public class Rev024_TWid_class {
 	 * 	public static void main(String[] args) throws Exception
 	 * 	-------
 	 * 	測試後仍會隨機產生NullPointerException
+	 * 	-------
+	 * 	在getId()就會出現id=null
+	 * 
 	 */
 	String gender() {
 		if (this.id.charAt(1) == '1') {

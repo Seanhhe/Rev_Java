@@ -99,34 +99,34 @@ public class Rev024_TWid {
 		System.out.println(e.concat("abc"));	//輸出0912123456abc
 		
 		//測試createId
-		Rev024_TWid_class id1 = Rev024_TWid_class.createTWid("A123456789");
-		System.out.println("id1是否為null? : " + id1 == null);	//輸出false
-		
+		Rev024_TWid_class id1 = Rev024_TWid_class.createTWid("A12345678");
+		System.out.println("id1是否為null? : " + (id1 == null));	//輸出false
+		System.out.println("id1 = " + id1);	//輸出id1的記憶體位址
 		System.out.println("以下---四個建構式測試 & 地區 & 性別 顯示 (共五種方法)---");
 		
 		
 		//	測試四個建構式	(五種方法)
-		Rev024_TWid_class id2 = new Rev024_TWid_class(false, 15);
-		System.out.println(id2.getId() + " " + id2.gender() + " " + id2.showArea());
+		Rev024_TWid_class id2 = new Rev024_TWid_class();
+		System.out.println(id2.getId()); //+ " " + id2.gender() + " " + id2.showArea());
 		
 //		Rev024_TWid_class id3 = new Rev024_TWid_class(true);
 //		System.out.println(id3.getId() + " " + id3.gender() + " " + id3.showArea());
-		
+//		
 //		Rev024_TWid_class id4 = new Rev024_TWid_class(10);
 //		System.out.println(id4.getId() + " " + id4.gender() + " " + id4.showArea());
 //		
-//		Rev024_TWid_class id5 = new Rev024_TWid_class();
+//		Rev024_TWid_class id5 = new Rev024_TWid_class(false, 15);
 //		System.out.println(id5.getId() + " " + id5.gender() + " " + id5.showArea());
 //		
 //		Rev024_TWid_class id6 = Rev024_TWid_class.createTWid("A123456789");
 //		System.out.println(id6.getId() + " " + id6.gender() + " " + id6.showArea());
 //		
 //		
-//		if (Rev024_TWid_class.checkId2("A123456789") == true) {
-//			System.out.println("checkId2檢查的ID2 correct");
-//		}else {
-//			System.out.println("ID2 NG");
-//		}
+////		if (Rev024_TWid_class.checkId2("A123456789") == true) {
+////			System.out.println("checkId2檢查的ID2 correct");
+////		}else {
+////			System.out.println("ID2 NG");
+////		}
 	}
 
 }
