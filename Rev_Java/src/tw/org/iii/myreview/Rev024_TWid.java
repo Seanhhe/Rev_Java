@@ -99,7 +99,9 @@ public class Rev024_TWid {
 		System.out.println(e.concat("abc"));	//輸出0912123456abc
 		
 		//測試createId
-		Rev024_TWid_class id1 = Rev024_TWid_class.createTWid("A12345678");
+		System.out.println("以下---測試createId---");
+//		Rev024_TWid_class id1 = Rev024_TWid_class.createTWid("U298514338");	//出現Exception導致null
+		Rev024_TWid_class id1 = Rev024_TWid_class.createTWid("A123456789");
 		System.out.println("id1是否為null? : " + (id1 == null));	//輸出false
 		System.out.println("id1 = " + id1);	//輸出id1的記憶體位址
 		System.out.println("以下---四個建構式測試 & 地區 & 性別 顯示 (共五種方法)---");

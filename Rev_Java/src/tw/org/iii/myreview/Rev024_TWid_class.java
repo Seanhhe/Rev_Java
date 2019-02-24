@@ -90,7 +90,6 @@ public class Rev024_TWid_class extends Object{
 		this((int)(Math.random()*2)==0, area);
 	}
 	
-
 	Rev024_TWid_class(boolean isMale, int area) {
 		String i1 = letters.substring(area, area+1);
 		String i2 = isMale?"1":"2";
@@ -127,20 +126,30 @@ public class Rev024_TWid_class extends Object{
 		System.out.println("String newId2: " + newId2);
 		//	最後一碼檢查碼	(正確就產生正式ID回傳)
 		//	執行checkId_方法來檢查
+		oneMoreTime:
 		for (int i = 0; i <9; i++) {
 //			if ((this.id != null) && (checkId(newId2+i))) {		//id永遠null
 //			if (checkId(newId2+i)&&((newId2+i)!=null)) {	//隨機出現id=null
+			//把int i轉型為String再newId2.concat(i)
+//			String tmp = newId2.concat(String.valueOf(i));
+//			System.out.println("tmp : " + tmp);//都有正常輸出
+//			if (checkId(tmp)){
+//				this.id = null;//還是會null
+//				this.id = tmp;
+			System.out.println("for迴圈 newId2 : " + newId2 + "  i : " + i);
 			if (checkId(newId2+i)) {
 				this.id = newId2 + i;
-				System.out.println("newId2 :" + newId2 + " i:" + i);
-				System.out.println(id);
+				System.out.println("newId2 :" + newId2 + " i:" + i);	//為什麼null時這135及136行沒執行到? > checkId為false而離開
+				System.out.println(id);	//為什麼null時這135及136行沒執行到?
 				break;
-			}//else {
+			}else {
 				//new Rev024_TWid_class(); //溢位
 				//Rev024_TWid_class id3 = new Rev024_TWid_class(); //溢位
 				//i = 0; return;	//隨機出現無窮迴圈
-				
-			//}
+				System.out.println("null !!!");
+				this.id = null; //清空id
+				continue oneMoreTime;//還是會出現null
+			}
 			
 		}
 	}
@@ -225,8 +234,9 @@ public class Rev024_TWid_class extends Object{
 		if (checkId(id)) {	//確認產生的id合格
 			return new Rev024_TWid_class(id);	//回傳新的id物件
 		}else {
-			throw new Exception();
 			//return null;	//避免return null
+			System.out.println("不合格身分證字號");
+			throw new Exception();
 		}
 	}
 	
