@@ -109,7 +109,7 @@ public class Rev024_TWid {
 		
 		//	測試四個建構式	(五種方法)
 		Rev024_TWid_class id2 = new Rev024_TWid_class();
-		System.out.println(id2.getId()); //+ " " + id2.gender() + " " + id2.showArea());
+		System.out.println(id2.getId() + " " + id2.gender() + " " + id2.showArea());
 		
 //		Rev024_TWid_class id3 = new Rev024_TWid_class(true);
 //		System.out.println(id3.getId() + " " + id3.gender() + " " + id3.showArea());

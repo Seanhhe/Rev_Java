@@ -126,11 +126,11 @@ public class Rev024_TWid_class extends Object{
 		System.out.println("String newId2: " + newId2);
 		//	最後一碼檢查碼	(正確就產生正式ID回傳)
 		//	執行checkId_方法來檢查
-		oneMoreTime:
+//		oneMoreTime:
 		for (int i = 0; i <9; i++) {
 //			if ((this.id != null) && (checkId(newId2+i))) {		//id永遠null
 //			if (checkId(newId2+i)&&((newId2+i)!=null)) {	//隨機出現id=null
-			//把int i轉型為String再newId2.concat(i)
+			//嘗試四:把int i轉型為String再newId2.concat(i)
 //			String tmp = newId2.concat(String.valueOf(i));
 //			System.out.println("tmp : " + tmp);//都有正常輸出
 //			if (checkId(tmp)){
@@ -143,12 +143,12 @@ public class Rev024_TWid_class extends Object{
 				System.out.println(id);	//為什麼null時這135及136行沒執行到?
 				break;
 			}else {
-				//new Rev024_TWid_class(); //溢位
-				//Rev024_TWid_class id3 = new Rev024_TWid_class(); //溢位
-				//i = 0; return;	//隨機出現無窮迴圈
+				//new Rev024_TWid_class(); //嘗試一:溢位
+				//Rev024_TWid_class id3 = new Rev024_TWid_class(); //嘗試二:溢位
+				//i = 0; return;	//嘗試三:隨機出現無窮迴圈
 				System.out.println("null !!!");
 				this.id = null; //清空id
-				continue oneMoreTime;//還是會出現null
+//				continue oneMoreTime;//嘗試五:還是會出現null
 			}
 			
 		}
