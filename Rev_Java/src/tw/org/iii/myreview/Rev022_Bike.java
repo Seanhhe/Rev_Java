@@ -90,7 +90,7 @@ public class Rev022_Bike implements Serializable{
 	 */
 	Rev022_Bike(){ //建構式初始化
 		speed = 0;
-		System.out.println("BIKE Initiate");
+		System.out.println("BIKE Initiate : 建構式初始化");
 	}
 	
 	// 可輸入速度的建構式
