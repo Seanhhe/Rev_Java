@@ -14,15 +14,15 @@ package tw.org.iii.myreview;
 public class Rev035 {
 
 	public static void main(String[] args) {
-		System.out.println("---Static 0351---");
-		
-		//Rev0351.m2();
-		
-		System.out.println();
-		
-		System.out.println("---Static---");
-		// static 方法	不用產生物件實體就可呼叫
-		Rev0352.m2();
+//		System.out.println("---Static 0351---");
+//		
+//		//Rev0351.m2();
+//		
+//		System.out.println();
+//		
+//		System.out.println("---Static---");
+//		// static 方法	不用產生物件實體就可呼叫
+//		Rev0352.m2();
 		/**
 		 * 		執行時顯示如下 (當Rev0351.m2()被註解掉時)
 		 * 		Rev0351{static} 程式區塊
@@ -41,11 +41,11 @@ public class Rev035 {
 		 * 		
 		 */
 		
-		System.out.println();
-		
-		System.out.println("----Rev0351----");
-		
-		Rev0351 obj1 = new Rev0351();
+//		System.out.println();
+//		
+//		System.out.println("----Rev0351----");
+//		
+//		Rev0351 obj1 = new Rev0351();
 		
 		/**		先執行父類別object，再執行程式區塊，最後做初始化
 		 * 		Rev0351{} 程式區塊
@@ -63,9 +63,54 @@ public class Rev035 {
 		//
 		System.out.println("----Rev0352 obj2 = new Rev0352();----");
 		
-		Rev0352 obj2 = new Rev0352();
+		//Rev0352 obj2 = new Rev0352();
 		
-		/**
+		/**(記得先把前面的都先註解掉) [父類別要在，子類別才會在]
+		 * 		要載入352物件實體
+		 * 		->先載入程式區塊: 父類別 & 子類別
+		 * 		->再載入
+		 * 
+		 * 
+		 * Rev0351{static} 程式區塊	<--STATIC的程式區塊 (父->子)
+		 * Rev0352{static} 程式區塊
+		 * 
+		 * Rev0351{} 程式區塊	<--351的程式區塊 & 初始化
+		 * Rev0352: m1()
+		 * Rev0351() 建構式
+		 * 
+		 * Rev0352{} 程式區塊	<--352的程式區塊 & 初始化
+		 * Rev0352() 建構式
+		 */
+		
+		System.out.println("----Rev0352 obj2, obj3----");
+		
+		Rev0352 obj2 = new Rev0352();
+		Rev0352 obj3 = new Rev0352();
+		
+		/**		類別是類別，物件是物件
+		 * 		類別只載入一次，物件就分別載入
+		 * 
+		 * 		-> static 程式區塊
+		 * 		Rev0351{static} 程式區塊
+		 *		Rev0352{static} 程式區塊
+		 *		
+		 *		-> obj2  父類別的程式區塊 & 建構式
+		 *		Rev0351{} 程式區塊
+		 *		Rev0352: m1()
+		 *		Rev0351() 建構式
+		 *
+		 *		-> obj2  子類別的程式區塊 & 建構式
+		 *		Rev0352{} 程式區塊
+		 *		Rev0352() 建構式
+		 *
+		 *		-> obj3  父類別
+		 *		Rev0351{} 程式區塊
+		 *		Rev0352: m1()
+		 *		Rev0351() 建構式
+		 *
+		 *		-> obj3  子類別
+		 *		Rev0352{} 程式區塊
+		 *		Rev0352() 建構式
 		 * 
 		 */
 	}
