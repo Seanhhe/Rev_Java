@@ -1,6 +1,10 @@
 package tw.org.iii.myreview;
 
 import java.awt.BorderLayout;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 
 import javax.swing.JFrame;
 
@@ -32,11 +36,88 @@ public class Rev040_interface3_window extends JFrame {
 		
 		//	滑鼠事件
 		addMouseListener(new MyClicker());
+		
+		// 關閉視窗 方法一
+		addWindowListener(new MyWindowListener());
+		
+		// 視窗大小 & 顯示視窗
+		setSize(640, 480);
+		setVisible(true);
+		setDefaultCloseOperation(EXIT_ON_CLOSE); // 關閉視窗方法一
 	}
 	
 	
 	public static void main(String[] args) {
+		// 程式的執行點
+		new Rev040_interface3_window();
+	}
+
+}
+
+// 滑鼠事件
+class MyClicker extends MouseAdapter {
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		super.mouseClicked(e);
+		System.out.println(e.getX());
+		System.out.println(e.getY());
+		new Rev040MyPanel();
+	}
+}
+
+
+/**
+ * 		不用setDefaultCloseOperation(EXIT_ON_CLOSE);方法關閉視窗
+ * 		改用下面的方法：WindowListener
+ * 		但僅需要其中的closing方法
+ *		改用 class WindowAdapter (implements WindowListener的抽象類別)
+ */
+
+// 關閉視窗 方法一
+class MyWindowListener implements WindowListener {
+	// 建立MyWindowListener 實現WindowListener 建立MWL物件實體
+	// 接收視窗活動訊息
+		
+	@Override
+	public void windowActivated(WindowEvent arg0) {
+		System.out.println("windowActivated(WindowEvent arg0)");
+	}
+
+	@Override
+	public void windowClosed(WindowEvent arg0) {
+		System.out.println("windowClosed(WindowEvent arg0)");
+	}
+
+	@Override
+	public void windowClosing(WindowEvent arg0) {
+		System.out.println("windowClosing(WindowEvent arg0)");
+		System.exit(0);	//	關閉程式
+		//	參數0  -->  command line return value
+		//	回傳給系統上一道指令完成的return值
+		//	通常return 0 代表 normal / 非0 代表 error
 		
 	}
 
+	@Override
+	public void windowDeactivated(WindowEvent arg0) {
+		System.out.println("windowDeactivated(WindowEvent arg0)");
+	}
+
+	@Override
+	public void windowDeiconified(WindowEvent arg0) {
+		System.out.println("windowDeiconified(WindowEvent arg0)");
+		
+	}
+
+	@Override
+	public void windowIconified(WindowEvent e) {
+		System.out.println("windowIconified(WindowEvent e)");
+	}
+
+	@Override
+	public void windowOpened(WindowEvent arg0) {
+		System.out.println("windowOpened(WindowEvent arg0)");
+	}
+	
 }
