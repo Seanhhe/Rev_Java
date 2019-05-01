@@ -27,6 +27,17 @@ public class Rev040MyPanel extends JPanel implements MouseListener {
 		System.out.println("Rev040MyPanel(); 無傳參數建構式");
 		addMouseListener(this);
 	}
+	
+	public Rev040MyPanel(int ballx, int bally) {
+		// 建構式2 0811 V2版改
+		this.ballx = ballx;
+		this.bally = bally;
+		color = Color.RED;
+		
+		addMouseListener(this);
+		// this--> Rev040MyPanel 自己聽
+	}
+	
 
 	/**		在 JPanel 上使用 paint(Graphics g) 的問題
 	 * 		https://www.javaworld.com.tw/jute/post/view?bid=5&id=172926&tpg=1&ppg=1&sty=1&age=0
@@ -49,9 +60,11 @@ public class Rev040MyPanel extends JPanel implements MouseListener {
 		super.paintComponent(g);
 		System.out.println("paintComponent(Graphic g): paint");
 		Graphics2D g2d = (Graphics2D)g; // 強制轉型回Graphics2D [骨子裡是Graphics2D 不清楚可用instanceof] (API: java.awt.Graphics2D)
-		g2d.drawOval(10, 50, 50, 50); // drawOval 畫橢圓
+		//g2d.drawOval(10, 50, 50, 50); // drawOval 畫橢圓
 		
-		g2d.setColor(Color.ORANGE);
+		g2d.setColor(Color.ORANGE); // 先set顏色，之後可成功繪圖
+		g2d.fillOval(ballx, bally, 50, 50);
+		
 	}
 
 	// MouseListener 並沒有重新implement成另一個類別

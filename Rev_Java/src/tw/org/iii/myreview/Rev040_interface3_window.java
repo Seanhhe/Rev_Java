@@ -3,6 +3,7 @@ package tw.org.iii.myreview;
 import java.awt.BorderLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
@@ -35,15 +36,18 @@ public class Rev040_interface3_window extends JFrame {
 		add(myPanel, BorderLayout.CENTER);
 		
 		//	滑鼠事件
-		addMouseListener(new MyClicker());
+		//addMouseListener(new MyClicker());
 		
 		// 關閉視窗 方法一
-		addWindowListener(new MyWindowListener());
+		//addWindowListener(new MyWindowListener());
+		
+		// 關閉視窗 方法二
+		addWindowListener(new MyListener());
 		
 		// 視窗大小 & 顯示視窗
 		setSize(640, 480);
 		setVisible(true);
-		setDefaultCloseOperation(EXIT_ON_CLOSE); // 關閉視窗方法一
+		//setDefaultCloseOperation(EXIT_ON_CLOSE); // 關閉視窗方法一
 	}
 	
 	
@@ -54,17 +58,17 @@ public class Rev040_interface3_window extends JFrame {
 
 }
 
-// 滑鼠事件
-class MyClicker extends MouseAdapter {
-
-	@Override
-	public void mouseClicked(MouseEvent e) {
-		super.mouseClicked(e);
-		System.out.println(e.getX());
-		System.out.println(e.getY());
-		new Rev040MyPanel();
-	}
-}
+//// 滑鼠事件
+//class MyClicker extends MouseAdapter {
+//
+//	@Override
+//	public void mouseClicked(MouseEvent e) {
+//		super.mouseClicked(e);
+//		System.out.println(e.getX());
+//		System.out.println(e.getY());
+//		new Rev040MyPanel();
+//	}
+//}
 
 
 /**
@@ -74,50 +78,78 @@ class MyClicker extends MouseAdapter {
  *		改用 class WindowAdapter (implements WindowListener的抽象類別)
  */
 
-// 關閉視窗 方法一
-class MyWindowListener implements WindowListener {
-	// 建立MyWindowListener 實現WindowListener 建立MWL物件實體
-	// 接收視窗活動訊息
-		
-	@Override
-	public void windowActivated(WindowEvent arg0) {
-		System.out.println("windowActivated(WindowEvent arg0)");
-	}
+//// 關閉視窗 方法一
+//class MyWindowListener implements WindowListener {
+//	// 建立MyWindowListener 實現WindowListener 建立MWL物件實體
+//	// 接收視窗活動訊息
+//		
+//	@Override
+//	public void windowActivated(WindowEvent arg0) {
+//		System.out.println("windowActivated(WindowEvent arg0)");
+//	}
+//
+//	@Override
+//	public void windowClosed(WindowEvent arg0) {
+//		System.out.println("windowClosed(WindowEvent arg0)");
+//	}
+//
+//	@Override
+//	public void windowClosing(WindowEvent arg0) {
+//		System.out.println("windowClosing(WindowEvent arg0)");
+//		System.exit(0);	//	關閉程式
+//		//	參數0  -->  command line return value
+//		//	回傳給系統上一道指令完成的return值
+//		//	通常return 0 代表 normal / 非0 代表 error
+//		
+//	}
+//
+//	@Override
+//	public void windowDeactivated(WindowEvent arg0) {
+//		System.out.println("windowDeactivated(WindowEvent arg0)");
+//	}
+//
+//	@Override
+//	public void windowDeiconified(WindowEvent arg0) {
+//		System.out.println("windowDeiconified(WindowEvent arg0)");
+//		
+//	}
+//
+//	@Override
+//	public void windowIconified(WindowEvent e) {
+//		System.out.println("windowIconified(WindowEvent e)");
+//	}
+//
+//	@Override
+//	public void windowOpened(WindowEvent arg0) {
+//		System.out.println("windowOpened(WindowEvent arg0)");
+//	}
+//	
+//}
 
+// 關閉視窗_方法二
+class MyListener extends WindowAdapter {
+	// 繼承抽象類別 WindowAdapter 並加以override實作
+	// 缺點是不能再找父類別繼承
 	@Override
-	public void windowClosed(WindowEvent arg0) {
-		System.out.println("windowClosed(WindowEvent arg0)");
-	}
-
-	@Override
-	public void windowClosing(WindowEvent arg0) {
-		System.out.println("windowClosing(WindowEvent arg0)");
-		System.exit(0);	//	關閉程式
+	public void windowClosing(WindowEvent e) {
+		super.windowClosing(e);
+		System.exit(0); //	關閉程式
 		//	參數0  -->  command line return value
 		//	回傳給系統上一道指令完成的return值
 		//	通常return 0 代表 normal / 非0 代表 error
-		
+	}
+	
+	@Override
+	public void windowActivated(WindowEvent e) {
+		super.windowActivated(e);
+		System.out.println("Activated");
 	}
 
 	@Override
-	public void windowDeactivated(WindowEvent arg0) {
-		System.out.println("windowDeactivated(WindowEvent arg0)");
+	public void windowDeactivated(WindowEvent e) {
+		super.windowDeactivated(e);
+		System.out.println("Deactivated");
 	}
-
-	@Override
-	public void windowDeiconified(WindowEvent arg0) {
-		System.out.println("windowDeiconified(WindowEvent arg0)");
-		
-	}
-
-	@Override
-	public void windowIconified(WindowEvent e) {
-		System.out.println("windowIconified(WindowEvent e)");
-	}
-
-	@Override
-	public void windowOpened(WindowEvent arg0) {
-		System.out.println("windowOpened(WindowEvent arg0)");
-	}
+	
 	
 }
