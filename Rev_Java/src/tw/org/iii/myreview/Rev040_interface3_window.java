@@ -5,7 +5,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
+//import java.awt.event.WindowListener;
 
 import javax.swing.JFrame;
 
@@ -26,13 +26,14 @@ import javax.swing.JFrame;
  */
 
 public class Rev040_interface3_window extends JFrame {
-	private Rev040MyPanelV3 myPanel;
+	private Rev040MyPanelV4 myPanel;
 	// 建構式
 	public Rev040_interface3_window() {
 		setLayout(new BorderLayout());	// setLayout的順序位置會影響後面的add (先set可以add)
 		//myPanel = new Rev040MyPanel();	// 僅產生物件實體
 		//myPanel = new Rev040MyPanelV2();	// 0816 review改用V2版本
-		myPanel = new Rev040MyPanelV3();	// V3版
+		//myPanel = new Rev040MyPanelV3();	// V3版
+		myPanel = new Rev040MyPanelV4();
 		add(myPanel, BorderLayout.CENTER);
 		
 		//	滑鼠事件
