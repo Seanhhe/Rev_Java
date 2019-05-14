@@ -87,6 +87,49 @@ public class Rev043_Exception {
 		 * 		-->如果非直系血親=沒差
 		 * 		-->若為直系血親-->子類別(細部處理)要放在父類別上面
 		 */
+		
+		try {
+			int c = a / b;
+			System.out.println(c); // 這裡先有狀況就先拋出
+			System.out.println(d[13]); // 前面有狀況，所以這句跟本沒執行，雖然他也有狀況
+		} catch (ArithmeticException e) {
+			System.out.println("有狀況1");
+		} catch (ArrayIndexOutOfBoundsException e) {
+			// 除了數學以外都由這個接住，視情況也可以全都給他接
+			System.out.println("有狀況2");
+		}
+		System.out.println("END");
+		
+//		try {
+//			int c = a / b;
+//			System.out.println(c); // 這裡先有狀況就先拋出
+//			System.out.println(d[13]); // 前面有狀況, 所以這句根本沒執行, 雖然他也有狀況
+//		} catch (Exception e) {
+//			// 除了數學以外都由這個接住，視情況也可以全給他接
+//			System.out.println("有狀況2");
+//		}
+//		catch (ArithmeticException e) {
+//			// 比RuntimeException小，所以接不到
+//			System.out.println("有狀況1");
+//		}
+//		System.out.println("END");
+		
+		
+		
+		//--------------------------------
+		/*		補充(與exception觀念無關)
+		 * 		浮點運算中的0並不是真的0，而是非常接近0的數
+		 */
+		double a1 = 10, b1 = 3;
+		double c1 = a1 / b1;
+		System.out.println(c1);
+		double d1 = 0;
+		double e = 10 / d1;
+		System.out.println(e);
+		double f = 0, g = 0;
+		double h = f / g;
+		System.out.println(h);
+		
 	}
 
 }
