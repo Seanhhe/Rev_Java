@@ -35,7 +35,7 @@ public class Rev048_Stream1 {
 			}while (temp != -1);
 			
 			
-			//	寫法二
+			//	寫法
 			
 			
 		} catch (FileNotFoundException e) {
