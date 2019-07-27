@@ -17,7 +17,7 @@ public class Rev048_Stream1 {
 	public static void main(String[] args) {
 		
 		try {
-			FileInputStream fin = new FileInputStream("dir3/Rev048_Steam01.txt");
+			FileInputStream fin = new FileInputStream("dir3/Rev048_Stream01.txt");
 			
 			// read(); 一次只能讀取一個byte
 //			int a = fin.read();
