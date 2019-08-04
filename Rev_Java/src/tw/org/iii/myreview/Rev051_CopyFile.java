@@ -34,7 +34,7 @@ public class Rev051_CopyFile {
 			fout.close();
 			
 			// 確認有執行成功
-			System.out.println("OK : " + (System.currentTimeMillis() - start));
+			System.out.println("OK : " + (System.currentTimeMillis() - start)); //測試結果花了17736單位時間
 		} catch (FileNotFoundException e) {
 			System.out.println("FileNotFoundException : " + e);
 		} catch (IOException e) {
