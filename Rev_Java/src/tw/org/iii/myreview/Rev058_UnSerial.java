@@ -32,7 +32,20 @@ public class Rev058_UnSerial {
 			
 			Object obj1 = oin.readObject(); // 在記憶體中建立物件實體，儲存讀出的物件
 			Student s1 = (Student)obj1; // 把讀出的物件轉型回原形
-			System.out.println("總平均 : 總分數 = " + s1.calAvg() + ":" + s1.calSum());
+			/*
+			 * 		以下的計算，若Rev057的屬性中有 tensient 宣告，序列化時不影響原先物件。
+			 * 		解序列化時，就會有影響。
+			 * 		例如：Rev057輸出的Rev057.object物件，其 int ch屬性在Rev058解序列化-重新讀取Rev057.object時，
+			 * 		ch的初始值會變 0 。進而影響後續的總分數 & 總平均。
+			 */
+			System.out.println("總分數：總平均 = " + s1.calSum() + ":" + s1.calAvg());
+			
+			// 學生的腳踏車	(物件中的物件)
+			System.out.println("學生的腳踏車的速度：" + s1.bike.getSpeed());
+			
+			// 物件二腳踏車
+			Rev022_Bike b1 = (Rev022_Bike)oin.readObject();
+			System.out.println("腳踏車的速度：" + b1.getSpeed());
 			
 		} catch (FileNotFoundException e) {
 			System.out.println("FileNotFoundException : " + e);

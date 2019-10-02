@@ -63,7 +63,8 @@ public class Rev057_Serial {
 // 要被輸出的物件
 class Student implements Serializable {
 	// 要執行序列化的物件，需要宣告實作序列化介面
-	transient int ch; // 宣告該屬性不執行序列化		影響原物件，但解序列化後會有差異
+	int ch;
+//	transient int ch; // 宣告該屬性不執行序列化		影響原物件，但解序列化後會有差異 (影響Rev058的計算結果)
 	int eng, math;
 	
 	// 讓學生擁有腳踏車物件 Rev022_Bike
