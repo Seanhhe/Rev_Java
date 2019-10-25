@@ -1,5 +1,6 @@
 package tw.org.iii.myreview;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -26,29 +27,59 @@ public class Rev066_Socket {
 		 * 		2. send TCP data
 		 */
 		
+//		try {
+//			byte[] buf = new byte[4096];
+//			
+//			Socket socket = new Socket("172.20.10.3", 7777); // ipconfig 指令查出接收端的IP
+//			OutputStream out = socket.getOutputStream();
+//			
+//			// 先寫的是這邊 --> 寫code的順序與思考邏輯
+//			FileInputStream fin = new FileInputStream("dir3/image.jpg");
+//			
+//			int len;
+//			while((len = fin.read(buf)) != -1) {
+//				// 每讀入一段4096就寫出，最後一段不滿4096就看長度多少就發出多少
+//				out.write(buf, 0, len);
+//			}
+//			fin.close();
+//			
+//			out.flush();
+//			out.close();
+//			socket.close();
+//			System.out.println("Sent 已傳送");
+//			
+//		} catch (FileNotFoundException e) {
+//			System.out.println("FileNotFoundExceptipon : " + e);
+//		} catch (IOException e) {
+//			System.out.println("IOException : " + e);
+//		}
+		
+		// ----------------------------------
+		
+		// 提升寫出速度
+		
+		
 		try {
-			byte[] buf = new byte[4096];
+			// 直接把檔案一次讀進buffer中
+			File file = new File("dir3/image.jpg");
+			byte[] buf = new byte[(int)file.length()];
+			new FileInputStream(file).read(buf);
 			
-			Socket socket = new Socket("172.20.10.3", 7777); // ipconfig 指令查出接收端的IP
-			OutputStream out = socket.getOutputStream();
+			// 建立socket
+			Socket socket = new Socket("172.20.10.6", 7777); // ipconfig 指令查出接收端的IP
+			OutputStream out = socket.getOutputStream(); // 是否還能提升效率? (課本10-11頁)
 			
-			// 先寫的是這邊 --> 寫code的順序與思考邏輯
-			FileInputStream fin = new FileInputStream("dir3/image.jpg");
-			
-			int len;
-			while((len = fin.read(buf)) != -1) {
-				// 每讀入一段4096就寫出，最後一段不滿4096就看長度多少就發出多少
-				out.write(buf, 0, len);
-			}
-			fin.close();
+			// 把資料寫到socket
+			out.write(buf);
 			
 			out.flush();
 			out.close();
+			
 			socket.close();
-			System.out.println("Sent 已傳送");
+			System.out.println("Sent 資料已傳送");
 			
 		} catch (FileNotFoundException e) {
-			System.out.println("FileNotFoundExceptipon : " + e);
+			System.out.println("FileNotFoundException : " + e);
 		} catch (IOException e) {
 			System.out.println("IOException : " + e);
 		}
