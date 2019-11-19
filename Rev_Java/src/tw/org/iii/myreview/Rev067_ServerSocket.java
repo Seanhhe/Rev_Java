@@ -66,7 +66,7 @@ public class Rev067_ServerSocket {
 			//System.out.println("後"); //沒印出，且Server Received沒印出
 			
 			int len;
-			byte[] buf = new byte[4096*4096]; // 一次讀的值
+			byte[] buf = new byte[4096*4096]; // 一次讀的值(太多會浪費記憶體空間)
 			while((len = in.read(buf)) != -1) {
 				fout.write(buf, 0, len); // 一次一次寫出的量
 			}

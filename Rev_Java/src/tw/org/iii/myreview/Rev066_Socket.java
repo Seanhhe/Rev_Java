@@ -66,7 +66,8 @@ public class Rev066_Socket {
 			new FileInputStream(file).read(buf);
 			
 			// 建立socket
-			Socket socket = new Socket("172.20.10.6", 7777); // ipconfig 指令查出接收端的IP
+			Socket socket = new Socket("172.20.10.3", 7777); // ipconfig 指令查出接收端的IP
+			// 建立一個OPS物件，可把讀入程式的資料放進socket，以供寫出
 			OutputStream out = socket.getOutputStream(); // 是否還能提升效率? (課本10-11頁)
 			
 			// 把資料寫到socket
