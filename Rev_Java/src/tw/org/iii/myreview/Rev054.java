@@ -23,10 +23,10 @@ import java.io.InputStreamReader;
  * 		文字資料(通常都有換列符號) 若要一列一個字串，會需要判斷
  * 
  * 		串接API=>方便存取資料
- * 		BufferReader.readLine();
+ * 		BufferedReader.readLine();
  * 
  * 
- * 		FileReader(讀取檔案資料) - - > BufferReader (透過FR建構出BR)
+ * 		FileReader(讀取檔案資料) - - > BufferedReader (透過FR建構出BR)
  * 		FileInputStream(讀取網路資料；網路只有Stream)
  * 			-->InputStreamReader(透過FS建構)
  * 				-->BufferedReader

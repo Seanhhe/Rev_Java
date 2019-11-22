@@ -10,8 +10,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Rev067_02_ServerThreadCode extends Thread {
-	private ServerSocket m_serverSocket; // 伺服器端的Socket，接收Client端的連線
-	private Socket m_socket; // Server和Client之間的連線通道
+	private ServerSocket m_serverSocket; // 建立伺服器端的Socket物件，準備接收Client端的連線
+	private Socket m_socket; // 建立Server和Client之間的連線通道
 	
 	//建構式
 	public Rev067_02_ServerThreadCode(int port) {
@@ -42,7 +42,7 @@ public class Rev067_02_ServerThreadCode extends Thread {
 			PrintStream writer; // 使用PrintStream將字串進行編寫及送出
 			BufferedReader reader; // 使用BufferedReader將資料進行接收和讀取
 			
-			writer = new PrintStream(m_socket.getOutputStream()); // 因為是將資料編寫並印出，所以是Output
+			writer = new PrintStream(m_socket.getOutputStream()); // 因為是將資料編寫至此socket並印出，所以是Output
 			
 			/**	BufferedReader在建構時接受一個Reader物件，
 			 * 	在讀取標準輸入串流時，會使用InputStreamReader，

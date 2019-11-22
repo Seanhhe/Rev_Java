@@ -34,7 +34,11 @@ public class Rev066_02_ClientThreadCode extends Thread {
 		try {
 			if (m_socket != null) { // 連線成功才可繼續往下執行
 				
-				 //由於Server端使用 PrintStream 和 BufferedReader 來接收和寄送訊息，所以Client端也要相同
+				//由於Server端使用 PrintStream 和 BufferedReader 來接收和寄送訊息，所以Client端也要相同
+				//使用Socket的 getInputStream()和getOutputStream()進行接收和發送資料
+				//想要寫入字串可以用 PrintStream;
+				//想要把各種基本資料型態，如int, double...等的"值"輸出，可以用DataOutputStream;
+				//想要把整個物件 Serialize(序列化)，則可以用 ObjectOutputStream。
 				
 				PrintStream writer = new PrintStream(m_socket.getOutputStream()); //使用PrintStream將字串進行編寫和送出
 				BufferedReader reader = new BufferedReader(new InputStreamReader(m_socket.getInputStream()));
