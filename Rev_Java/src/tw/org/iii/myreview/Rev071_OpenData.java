@@ -40,6 +40,15 @@ public class Rev071_OpenData {
 			URL url = new URL("http://data.coa.gov.tw/Service/OpenData/DataFileService.aspx?UnitId=151");
 			
 			// 強制轉型回HttpsURLConnection
+			/*
+			 * 	http有無s，牽涉到信任鍊的憑證問題，請參考下述說明
+			 * 	https://www.twblogs.net/a/5c6fd02dbd9eee7f92ec2aed
+			 * 	https://zh.wikipedia.org/wiki/%E4%BF%A1%E4%BB%BB%E9%8F%88
+			 * 	
+			 * OpenSSL 檢測 SSL 的憑證串鍊 (Certificate chain)
+			 * 	https://shazi.info/openssl-%E6%AA%A2%E6%B8%AC-ssl-%E7%9A%84%E6%86%91%E8%AD%89%E4%B8%B2%E9%8D%8A-certificate-chain/
+			 * 
+			 */
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			
 			// 呼叫connection()方法，讓conn物件取得輸入串流
@@ -109,6 +118,8 @@ public class Rev071_OpenData {
 				String settlements = obj.getString("林道途經聚落");
 				String startingPoint = obj.getString("起點");
 				String endPoint = obj.getString("終點");
+				String totalDistance = obj.getString("總長度");
+				String walkDistance = obj.getString("步行長度");
 				
 				
 				System.out.println(forestRoadName + " : " + county + " : " + township + " : " + settlements + " : " + startingPoint +" : " + endPoint);
