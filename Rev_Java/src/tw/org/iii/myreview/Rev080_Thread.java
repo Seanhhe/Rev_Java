@@ -24,21 +24,21 @@ public class Rev080_Thread {
 		
 		String[] targets = {"Rev0801.jpg", "Rev0802.jpg", "Rev0803.jpg"};
 		
-//		for (int i = 0; i < urls.length; i++) {
-//			new FetchURLImage(urls[i], targets[i]).start();
-//			/*	start方法 => 同時進行
-//			 * 	一樣是循序進行，只是每一個start都被依序丟給 Run Pool
-//			 * 	減少CPU閒置時間
-//			 */
-//		}
-		
 		for (int i = 0; i < urls.length; i++) {
-			new FetchURLImage(urls[i], targets[i]).run();
-			/*	run方法 => 普通物件方法，循序進行
-			 * 	無執行緒的生命表現，循序一個接一個 => 易被延遲
-			 * 	(處理速度比.start方法慢很多)
+			new FetchURLImage(urls[i], targets[i]).start();
+			/*	start方法 => 同時進行
+			 * 	一樣是循序進行，只是每一個start都被依序丟給 Run Pool
+			 * 	減少CPU閒置時間
 			 */
 		}
+		
+//		for (int i = 0; i < urls.length; i++) {
+//			new FetchURLImage(urls[i], targets[i]).run();
+//			/*	run方法 => 普通物件方法，循序進行
+//			 * 	無執行緒的生命表現，循序一個接一個 => 易被延遲
+//			 * 	(處理速度比.start方法慢很多)
+//			 */
+//		}
 	}
 
 }
