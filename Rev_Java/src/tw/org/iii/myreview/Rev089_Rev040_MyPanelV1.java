@@ -64,10 +64,15 @@ public class Rev089_Rev040_MyPanelV1 extends JPanel implements MouseListener { /
 		 * 	開發者呼叫某方法導致觸發它，而那些方法才被呼叫
 		 */
 		super.paintComponent(g);
-		System.out.println("Paint");
+		System.out.println("V1 : Paint");
 		//把g強制轉型回Graphics2D [骨子裡是Graphic2D 不清楚可用instanceof ]
 		Graphics2D g2d = (Graphics2D)g;
-		g2d.setColor(Color.ORANGE); // 程式依序執行，先set，後繪圖，才看得到顏色
+		// 以下設定初始顏色
+		g2d.setColor(new Color(0,0,0,0)); // 程式依序執行，先set，後繪圖，才看得到顏色
+		System.out.println("V1 : 初始顏色 (透明)");
+		// 以下設定自V2~V3回傳Color物件的顏色
+		g2d.setColor(color);
+		System.out.println("V2~V3回傳Color物件的顏色");
 		g2d.drawOval(ballx, bally, 50, 50); // drawOval 畫橢圓 (X正值往右，Y正值往下)
 		g2d.fillOval(ballx, bally, 50, 50);
 		
