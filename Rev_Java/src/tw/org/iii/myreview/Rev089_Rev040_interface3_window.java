@@ -29,7 +29,7 @@ public class Rev089_Rev040_interface3_window extends JFrame {
 		// 放最前面
 		setLayout(new BorderLayout()); // 先setLayout才能使用add方法
 		
-		myPanel = new Rev089_Rev040_MyPanelV2(); // 僅產生物件實體
+		myPanel = new Rev089_Rev040_MyPanelV3(); // 僅產生物件實體
 		add(myPanel, BorderLayout.CENTER);
 		
 		// 加入滑鼠監聽事件
@@ -64,7 +64,7 @@ class MyClicker extends MouseAdapter {
 		super.mouseClicked(e);
 		System.out.println(e.getX()); // 透過getX()方法把值傳回e(滑鼠事件)
 		System.out.println(e.getY());
-		new Rev089_Rev040_MyPanelV2(); // 啟動MypanelV1()，如此才能從e取出XY值 並repaint()
+		new Rev089_Rev040_MyPanelV3(); // 啟動MypanelV1()，如此才能從e取出XY值 並repaint()
 	}
 	
 }

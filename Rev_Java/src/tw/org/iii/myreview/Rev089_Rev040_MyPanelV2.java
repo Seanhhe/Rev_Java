@@ -19,6 +19,7 @@ public class Rev089_Rev040_MyPanelV2 extends Rev089_Rev040_MyPanelV1 {
 		 *		3.	建構式沒有繼承，一定要重新寫		
 		 */
 		super();	//	可以呼叫，但是 => 父類別的無傳參數建構式裡是空的
+		//super(120, 120); // 呼叫有傳參數 => 可執行
 		
 		/*	add => 可增加很多？測試一下：再增加一個addML
 		 * 	執行面是先觸發父類別的addML，再觸發下面這個子類別的
@@ -41,11 +42,10 @@ public class Rev089_Rev040_MyPanelV2 extends Rev089_Rev040_MyPanelV1 {
 
 		@Override
 		public void mouseClicked(MouseEvent arg0) {
-			//System.out.println("V2 Click");
 			//	因父類別屬性沒有宣告為private，所以子類別的內部類別可以呼叫
 			color = Color.BLUE;
 			System.out.println("V2 Click : Color.BLUE");
-			repaint();
+			repaint(); // 是Rev089_Rev040_MyPanelV2的父類別方法 => 內部類別可以呼叫
 		}
 
 		@Override
