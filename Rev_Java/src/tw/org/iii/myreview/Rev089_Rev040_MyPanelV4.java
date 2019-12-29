@@ -51,7 +51,7 @@ public class Rev089_Rev040_MyPanelV4 extends Rev089_Rev040_MyPanelV1 {
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
-			super.mouseClicked(e);
+			//super.mouseClicked(e);
 			color = Color.BLACK;
 			System.out.println("V4 mListener : a = " + a);
 		}
